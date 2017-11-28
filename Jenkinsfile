@@ -70,5 +70,5 @@ node{
 	otherFiles: ""])
 	}
 	}}
-*/
+*/}
 	}
