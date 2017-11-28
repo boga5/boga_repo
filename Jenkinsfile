@@ -41,7 +41,7 @@ node{
 			docker rm fortna-lms_jenkinsfile -f
 		fi
 		docker run -it -d --name fortna-lms_jenkinsfile --privileged=true -p 3000:8082 --add-host=dbserver:192.168.13.14 --env SERVICE_NAME=lms --env SERVICE_ID=lms_cicd -v /tmp/logs/lms/logs:/logs -v /tmp/logs/lms/configs:/configs 10.240.17.12:5043/wes-service-lms-1.0.0_jenkinsfile'''
-	*/}
+	}
    
 /* Certificate Issue for Deploying Artifacts
 	stage ('Deploy Artifacts') {
