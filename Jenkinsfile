@@ -7,12 +7,12 @@ node{
 	stage ('Build') {
 //Multiple SCMs trial by boga **************
 		// first repository
-		checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory']], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/boga5/java-app.git']]])
+		checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'c0c5e22f-9121-4734-922d-d8bfb1c4e339', url: 'https://padlgithubggk1.sw.fortna.net/WES/ggk-wes-service-lms.git']]])
 		// second repository
-		//checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'lmsqa']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'c0c5e22f-9121-4734-922d-d8bfb1c4e339', url: 'https://padlgithubggk1.sw.fortna.net/GGK-sboga/ggk-wes-service-lms-qa.git']]])
+		checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'lmsqa']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'c0c5e22f-9121-4734-922d-d8bfb1c4e339', url: 'https://padlgithubggk1.sw.fortna.net/GGK-sboga/ggk-wes-service-lms-qa.git']]])
 //trial code ends here ************
 		sh '''service=wes-service-lms-0.0.1-${BUILD_NUMBER}.jar 
-		//sed -i "s/jarfile/$service/" src/main/docker/Dockerfile'''
+		sed -i "s/jarfile/$service/" src/main/docker/Dockerfile'''
 		withSonarQubeEnv {
 		// some block
 			def mvn_version = tool 'maven'
@@ -36,6 +36,7 @@ node{
 	stage ('deployment') {      
 		sh '''#!/bin/bash
 		Container_status=`docker ps -a | grep "fortna-lms_jenkinsfile"`
+
 		if [ ! -z "$Container_status" ];
 		then
 			docker rm fortna-lms_jenkinsfile -f
