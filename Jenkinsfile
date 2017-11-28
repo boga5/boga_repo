@@ -58,8 +58,7 @@ node{
 	//Publish build info.
 	server.publishBuildInfo buildInfo
 	}
-    
-code ends here */    
+       
     
 	stage ('RFW') {
 	/*sh '''sleep 10s 
@@ -69,5 +68,7 @@ code ends here */
 	passThreshold: 50,
 	unstableThreshold: 50,
 	otherFiles: ""])
-	}*/
+	}
 	}}
+*/
+	}
