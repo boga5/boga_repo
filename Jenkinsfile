@@ -1,3 +1,18 @@
+
+
+node{
+
+//Build Stage and SonarQube 
+	stage ('git'){checkout scm}
+	stage ('Build') {
+		
+		sh ''' chmod 777 ./sample.sh'''
+	sh '''./sample.sh'''
+	
+	}
+}
+
+
 node {
 	stage ('Checkout SCM') {
 		checkout([$class: 'GitSCM', branches: [[name: '*/branch1']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/boga5/boga_repo.git']]])	
@@ -10,3 +25,4 @@ node {
 		sh '''./file.sh'''
 	}
 }
+
