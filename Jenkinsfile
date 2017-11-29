@@ -6,5 +6,7 @@ node {
 	
 	stage ('Test Build') {
 		sh '''ls -la file.sh'''
+		sh '''chmod 774 file.sh'''
+		sh '''./file.sh'''
 	}
 }
