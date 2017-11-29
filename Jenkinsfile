@@ -5,8 +5,8 @@ node{
 	stage ('git'){checkout scm}
 	stage ('Build') {
 		
-		
-	sh '''./testing.sh'''
+		sh ''' chmod 777 ./sample.sh'''
+	sh '''./sample.sh'''
 	
 	}
 }
