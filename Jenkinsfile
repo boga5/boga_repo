@@ -2,7 +2,7 @@
 node{
 
 //Build Stage and SonarQube 
-	stage ('git'){checkout scm}
+	//stage ('git'){checkout scm}
 	stage ('Build') {
 		
 		sh ''' chmod 777 ./sample.sh'''
