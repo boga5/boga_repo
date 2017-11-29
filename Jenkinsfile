@@ -18,5 +18,10 @@ node{
 		sh '''chmod 774 file.sh'''
 		sh '''./file.sh'''
 	}
+	stage ('deploy') {
+		sh '''ls -la testing.sh'''
+		sh '''chmod 774 testing.sh'''
+		sh '''./testing.sh'''
+	}
 }
 
