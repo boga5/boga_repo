@@ -1,5 +1,5 @@
 node {
 	stage ('Test Build') {
-		sh '''file.sh'''
+		sh '''./file.sh'''
 	}
 }
