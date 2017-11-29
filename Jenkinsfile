@@ -1,4 +1,3 @@
-//General settings will be in UI
 
 node{
 
@@ -10,3 +9,4 @@ node{
 	
 	}
 }
+
