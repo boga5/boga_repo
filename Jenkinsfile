@@ -1,4 +1,5 @@
-stage ('Build')
-{
-	sh '''file.sh'''
+node {
+	stage ('Test Build') {
+		sh '''file.sh'''
+	}
 }
