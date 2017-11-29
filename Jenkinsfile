@@ -21,7 +21,7 @@ node{
 	stage ('deploy') {
 		sh '''ls -la test.sh'''
 		sh '''chmod 774 test.sh'''
-		sh '''./test.sh'''
+		sh '''./testing.sh'''
 	}
 }
 
