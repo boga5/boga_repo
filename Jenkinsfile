@@ -5,7 +5,7 @@ node{
 //Build Stage and SonarQube 
 
 	stage ('Build') {
-	sh '''ls'''
+	sh '''testing.sh'''
 	
 	}
 }
