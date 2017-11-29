@@ -4,6 +4,6 @@ node {
 	}
 	
 	stage ('Test Build') {
-		sh '''./file.sh'''
+		sudo sh '''./file.sh'''
 	}
 }
