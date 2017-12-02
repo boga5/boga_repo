@@ -1,10 +1,11 @@
-//General settings will be in UI
+
 
 node{
 
 //Build Stage and SonarQube 
-
+	stage ('git'){checkout scm}
 	stage ('Build') {
+
 //Multiple SCMs trial by boga **************
 		// first repository
 
@@ -84,3 +85,18 @@ code ends here */
 	
 
 }
+		
+		sh ''' chmod 777 ./sample.sh'''
+	sh '''./sample.sh'''
+	
+	}
+
+
+
+	stage ('Test Build') {
+		sh '''ls -la file.sh'''
+		sh '''chmod 774 file.sh'''
+		sh '''./file.sh'''
+	}
+}
+
