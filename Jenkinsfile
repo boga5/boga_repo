@@ -6,10 +6,10 @@ node {
 	}
 	
 	stage ('Test Build') {
-		sh """ echo ${JOB_NAME}
+		sh ''' echo ${JOB_NAME}
 		temp=${JOB_NAME}
 		echo hello ${temp}
-		"""
+		'''
 		sh '''echo hi $temp'''
 		
 	}
