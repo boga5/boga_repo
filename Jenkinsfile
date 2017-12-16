@@ -14,7 +14,7 @@ node {
 	stage ('Reading Branch Varibles ')	{
 		println env.JOB_NAME
 		println branch_name1
-		sh """ res=`echo ${env.JOB_NAME}``echo _`
-		println res """
+		sh """ res=`echo ${env.JOB_NAME}``echo _` """
+		println res
 	}
 }
