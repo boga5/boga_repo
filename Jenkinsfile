@@ -9,7 +9,7 @@ node {
 		sh """ echo ${JOB_NAME}
 		temp=${JOB_NAME}
 		"""
-		sh """ echo hi $temp """
+		sh """ echo hi ${temp} """
 		
 	}
 		
