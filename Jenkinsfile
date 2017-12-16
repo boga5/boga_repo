@@ -11,7 +11,7 @@ node {
 	contents = null
 	def branch_name1 = properties.branch_name
 	stage ('Reading Branch Varibles ')	{
-		lock_res=`echo env.JOB_NAME``echo _``echo {branch_name1}`
-		echo $lock_res
+		sh """lock_res=`echo env.JOB_NAME``echo _``echo {branch_name1}`
+		echo $lock_res"""
 	}
 }
