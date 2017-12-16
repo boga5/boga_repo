@@ -1,39 +1,17 @@
 node {
 	def temp1 = null
 	stage ('Checkout SCM') {
-		checkout scm//([$class: 'GitSCM', branches: [[name: '*/branch1']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/boga5/boga_repo.git']]])	
-		//checkout changelog: false, poll: false, scm: [$class: 'GitSCM', branches: [[name: '']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '', name: '', refspec: '', url: 'https://github.com/boga5/boga_repo.git']]]
+		checkout scm
 	}
 	
-	stage ('Test Build') {
-		sh ''' echo ${JOB_NAME}
-		temp=${JOB_NAME}
-		echo hello ${temp}
-		'''
-		sh '''echo hi $temp'''
-		
-	}
-		
-		stage ('Reading Branch Varibles ')	{
-			println temp
-			Reason = "lockVar stage Failed"
-			JobName = "${JOB_NAME}"
-			def branch_name1 = properties.branch_name
-			println "${branch_name1}" 
-			if(JobName.contains('PR-'))
-			{
-				def index = JobName.indexOf("/");
-				lockVar = JobName.substring(0 , index)+"_"+"${branch_name1}"
-				Sonar_project_name = lockVar + "PR" 
-			}
-			else
-			{
-				 def index = JobName.indexOf("/");
-				 Sonar_project_name = JobName.substring(0 , index)+"_"+"${BRANCH_NAME}"
-				 lockVar = Sonar_project_name
-			}
-		
-	
-		
+	def content = readFile './.env'				// variable to store .env file contents
+	Properties properties = new Properties()	// creating an object for Properties class
+	InputStream contents = new ByteArrayInputStream(content.getBytes());	// storing the contents
+	properties.load(contents)	
+	contents = null
+	def branch_name1 = properties.branch_name
+	stage ('Reading Branch Varibles ')	{
+		lock_res=`echo env.JOB_NAME``echo _``echo {branch_name1}`
+		echo $lock_res
 	}
 }
