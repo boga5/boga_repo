@@ -1,4 +1,5 @@
 node {
+	def temp = null
 	stage ('Checkout SCM') {
 		checkout scm//([$class: 'GitSCM', branches: [[name: '*/branch1']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/boga5/boga_repo.git']]])	
 		//checkout changelog: false, poll: false, scm: [$class: 'GitSCM', branches: [[name: '']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '', name: '', refspec: '', url: 'https://github.com/boga5/boga_repo.git']]]
@@ -11,6 +12,7 @@ node {
 	}
 		
 		stage ('Reading Branch Varibles ')	{
+			println temp
 			Reason = "lockVar stage Failed"
 			JobName = "${JOB_NAME}"
 			def branch_name1 = properties.branch_name
