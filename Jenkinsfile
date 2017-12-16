@@ -16,6 +16,7 @@ node {
 		println branch_name1
 		sh """ res=`echo ${env.JOB_NAME}``echo _` 
 		echo ${res} """
+		println ${res}
 		
 	}
 }
