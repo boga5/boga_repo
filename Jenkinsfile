@@ -6,8 +6,8 @@ node {
 	
 	stage ('Test Build') {
 		sh """ echo ${JOB_NAME}
-		temp=${JOB_NAME}
-		println env.BRANCH_NAME
+		temp=${JOB_NAME}"""
+		
 	}
 		
 		stage ('Reading Branch Varibles ')	{
