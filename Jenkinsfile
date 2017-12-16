@@ -17,8 +17,6 @@ node {
 		sh """ res=`echo ${env.JOB_NAME}``echo _``echo ${branch_name1}` 
 		echo \${res} > temp.tx"""
 		content = readFile './temp.tx'				// variable to store .env file contents
-	contents = new ByteArrayInputStream(content.getBytes());	// storing the contents
-	properties.load(contents)	
-	contents = null
+		println content
 	}
 }
