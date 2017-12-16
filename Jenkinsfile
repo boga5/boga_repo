@@ -10,7 +10,7 @@ node {
 	properties.load(contents)	
 	contents = null
 	def branch_name1 = properties.branch_name
-	def res
+	//def res
 	stage ('Reading Branch Varibles ')	{
 		println env.JOB_NAME
 		println branch_name1
